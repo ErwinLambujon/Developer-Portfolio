@@ -54,7 +54,7 @@ export const Footer = () => {
             rel="noreferrer noopener"
             className="text-purple"
           >
-            Erwin H. Lambujon
+            Erwin Lambujon
           </Link>{" "}
           |{" "}
           <Link href={links.sourceCode} className="underline">
