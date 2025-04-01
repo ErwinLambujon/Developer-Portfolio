@@ -120,7 +120,7 @@ export const projects = [
     link: "",
     sourceCode: "https://github.com/ErwinLambujon/MetaAPI",
   },
-] as const;
+];
 
 export const testimonials = [
   {
