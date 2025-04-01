@@ -47,7 +47,6 @@ export const Footer = () => {
 
       <div className="relative z-[999] mt-16 flex flex-col items-center justify-between md:flex-row">
         <p className="text-sm font-light md:text-base md:font-normal">
-          Copyright &copy; {new Date().getFullYear()}{" "}
           <Link
             href="https://sanidhy.me"
             target="_blank"
@@ -56,10 +55,6 @@ export const Footer = () => {
           >
             Erwin H. Lambujon
           </Link>{" "}
-          |{" "}
-          <Link href={links.sourceCode} className="underline">
-            Source Code
-          </Link>
         </p>
 
         <div className="flex items-center gap-6 md:gap-3">

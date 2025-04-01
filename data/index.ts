@@ -3,7 +3,6 @@ import { links } from "@/config";
 export const navItems = [
   { name: "About", link: "#about" },
   { name: "Projects", link: "#projects" },
-  { name: "Testimonials", link: "#testimonials" },
   { name: "Contact", link: "#contact" },
 ] as const;
 
@@ -234,7 +233,6 @@ export const socialMedia = [
 ] as const;
 
 export const techStack = {
-  stack1: ["React.js", "Next.js", "Typescript", "Python", "Django"],
-  stack2: ["Tailwind CSS", "Framer Motion", "Three.js", "Radix UI", "Shadcn"],
-  stack3: ["Vue.js", "AWS", "MySql", "PostgreSQL", "MongoDB"],
+  stack1: ["React.js", "Next.js", "Typescript", "Python"],
+  stack2: ["Tailwind CSS", "ReactJS", "Django", "MySql", "Shadcn"],
 } as const;
