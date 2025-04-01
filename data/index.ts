@@ -108,7 +108,7 @@ export const projects = [
     des: "DSL Interpreter: A Java-based engine for parsing and executing user-defined commands in automated workflows.",
     img: "/interpreter.jpg",
     iconLists: ["/intellij.png", "/java.png"],
-    link: "https://ai-imaginify.netlify.app",
+    link: "",
     sourceCode: "https://github.com/sanidhyy/imaginify",
   },
   {
@@ -117,6 +117,7 @@ export const projects = [
     des: "Meta Data Retrieval: Built a system using the Meta Graph API to aggregate messages for enterprise insights.",
     img: "/metaapi.jpeg",
     iconLists: ["/api.png", "/fastapi.png", "/meta.png"],
+    link: "",
     sourceCode: "https://github.com/ErwinLambujon/MetaAPI",
   },
 ] as const;
