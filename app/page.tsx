@@ -1,11 +1,18 @@
 import { Approach } from "@/components/approach";
 import { Experience } from "@/components/experience";
-import { Footer } from "@/components/footer";
-import { Grid } from "@/components/grid";
 import { Hero } from "@/components/hero";
 import { FloatingNav } from "@/components/ui/floating-nav";
 import { RecentProjects } from "@/components/recent-projects";
 import { navItems } from "@/data";
+import { Footer } from "@/components/footer";
+import dynamic from "next/dynamic";
+
+const Grid = dynamic(
+  () => import("../components/grid").then((mod) => mod.Grid),
+  {
+    ssr: false, // This is crucial - it disables server-side rendering
+  }
+);
 
 const MainPage = () => {
   return (

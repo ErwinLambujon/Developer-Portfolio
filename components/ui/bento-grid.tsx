@@ -54,11 +54,18 @@ export const BentoGridItem = ({
   spareImg?: string;
 }) => {
   const [copied, setCopied] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(links.ownerEmail);
-    setCopied(true);
-  };
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+    const handleCopy = () => {
+      if (isMounted && navigator && navigator.clipboard) {
+        navigator.clipboard.writeText(links.ownerEmail);
+        setCopied(true);
+      }
+    };
 
   useEffect(() => {
     if (!copied) return;

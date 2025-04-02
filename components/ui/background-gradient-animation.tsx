@@ -41,7 +41,19 @@ export const BackgroundGradientAnimation = ({
   const [curY, setCurY] = useState(0);
   const [tgX, setTgX] = useState(0);
   const [tgY, setTgY] = useState(0);
+  const [isSafari, setIsSafari] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Added this effect to handle client-side only code
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    // Only run this effect on the client side after component is mounted
+    if (!isMounted) return;
+
+    // Now it's safe to access document
     document.body.style.setProperty(
       "--gradient-background-start",
       gradientBackgroundStart
@@ -59,6 +71,7 @@ export const BackgroundGradientAnimation = ({
     document.body.style.setProperty("--size", size);
     document.body.style.setProperty("--blending-value", blendingValue);
   }, [
+    isMounted,
     blendingValue,
     fifthColor,
     firstColor,
@@ -72,6 +85,9 @@ export const BackgroundGradientAnimation = ({
   ]);
 
   useEffect(() => {
+    // Only run this effect on the client side
+    if (!isMounted) return;
+
     const move = () => {
       if (!interactiveRef.current) {
         return;
@@ -83,8 +99,17 @@ export const BackgroundGradientAnimation = ({
       )}px, ${Math.round(curY)}px)`;
     };
 
-    move();
-  }, [curX, curY, tgX, tgY]);
+    const animationFrame = requestAnimationFrame(move);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [curX, curY, tgX, tgY, isMounted]);
+
+  useEffect(() => {
+    // Only run this effect on the client side
+    if (!isMounted) return;
+
+    // Now it's safe to access navigator
+    setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
+  }, [isMounted]);
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (interactiveRef.current) {
@@ -93,11 +118,6 @@ export const BackgroundGradientAnimation = ({
       setTgY(event.clientY - rect.top);
     }
   };
-
-  const [isSafari, setIsSafari] = useState(false);
-  useEffect(() => {
-    setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
-  }, []);
 
   return (
     <div
@@ -181,7 +201,7 @@ export const BackgroundGradientAnimation = ({
           )}
         />
 
-        {interactive && (
+        {interactive && isMounted && (
           <div
             ref={interactiveRef}
             onMouseMove={handleMouseMove}
