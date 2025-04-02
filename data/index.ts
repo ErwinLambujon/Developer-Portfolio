@@ -109,7 +109,7 @@ export const projects = [
     img: "/interpreter.jpg",
     iconLists: ["/intellij.png", "/java.png"],
     link: "",
-    sourceCode: "https://github.com/sanidhyy/imaginify",
+    sourceCode: "https://github.com/ErwinLambujon/Interpreter",
   },
   {
     id: 4,
